@@ -1,0 +1,48 @@
+<persistence version="2.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+    <persistence-unit name="OrmExample" transaction-type="RESOURCE_LOCAL">
+        <!--тут описываем все взаимождействия с базой данных-->
+        <class>
+            <!--тут подключаем сущности, которые станут таблицами-->
+            entity.Book</class>
+        <class>entity.UserTable</class>
+        <class>entity.Article</class>
+        <class>entity.Author</class>
+        <class>entity.Student</class>
+        <class>entity.Group</class>
+
+        <properties>
+<!--            указываем базу данных и настройки для подключения-->
+<!--            так же создаем соединения-->
+            <property name="javax.persistence.jdbc.url"
+
+                      value="jdbc:postgresql://localhost:5432/akio889DB"/>
+
+            <property name="javax.persistence.jdbc.user" value="akio889"/>
+
+            <property name="javax.persistence.jdbc.password" value="дущтфквщ09"/>
+
+            <property name="javax.persistence.jdbc.driver"
+
+                      value="org.postgresql.Driver"/>
+
+<!--            тут происходит логирование-->
+            <property name="eclipselink.logging.level" value="FINE"/>
+<!--            если таблицы не существует, то таблица будет создана-->
+<!--            если были изменения, то они добавятся-->
+            <property name="eclipselink.ddl-generation"
+                      value="create-or-extend-tables"/>
+<!--                      none - ничего не добавится-->
+<!--            drop-and-create-tables - все таблицы будут созданы заного-->
+<!--            create-tables - будет пытаться создать новые таблицы без удаленя-->
+
+
+            <property name="eclipselink.connection-pool.default.initial" value="1"/>
+            <property name="eclipselink.connection-pool.default.min" value="16"/>
+            <property name="eclipselink.connection-pool.default.max" value="16"/>
+        </properties>
+    </persistence-unit>
+</persistence>
